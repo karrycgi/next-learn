@@ -1,9 +1,12 @@
-import { GetStaticPaths, NextPage } from "next";
-import { RedNoticeQuery, RedNoticeResult, searchRedNotice } from "next-learn-red-notice-api"
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { RedNoticeDetails, detailsRedNotice, RedNoticeQuery, RedNoticeResult, searchRedNotice } from "next-learn-red-notice-api"
 import RedNotice from "next-learn-red-notice-api/src/lib/RedNotice.all";
 import { ParsedUrlQuery } from "querystring";
-interface Criminal {
 
+interface Criminal {
+    forename:string,
+    name:string,
+    thumbnail:string,
 }
 
 interface Pageable extends ParsedUrlQuery{
@@ -12,7 +15,12 @@ interface Pageable extends ParsedUrlQuery{
 
 const CriminalPage: NextPage<Criminal> = (criminal: Criminal) => {
     return <div>
-
+        <div>
+            {criminal.forename}
+        </div>
+        <div>
+            {criminal.name}
+        </div>
     </div>
 }
 
@@ -35,9 +43,25 @@ export const getStaticPaths: GetStaticPaths<Pageable> = async () => {
         }),
         fallback: false
     }
-
-
-
- 
-
+}
+export const getStaticProps: GetStaticProps<Criminal> = async (context:any) => {
+    const {id} = context.params as Pageable
+    try{
+        const details: RedNoticeDetails= await detailsRedNotice(id)
+        return {
+            props:{
+                forename: details.forename,
+                name: details.name,
+                thumbnail: details._links.thumbnail?.href||""
+            }
+        }
+    }catch(e){
+        return {
+            props:{
+                forename: "jon",
+                name: "doe",
+                thumbnail: ""
+            }
+        }
+    }
 }
