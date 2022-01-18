@@ -5,11 +5,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "next": "12.0.8",
-    "next-learn-red-notice-api": "git+https://github.com/karrycgi/next-learn-red-notice-api.git",
+    "next-learn-red-notice-api": "https://github.com/karrycgi/next-learn-red-notice-api.git",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
