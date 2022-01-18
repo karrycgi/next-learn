@@ -37,3 +37,17 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## Integrating Red Notice API Module
 
 npx yarn add git+https://github.com/karrycgi/next-learn-red-notice-api.git
+```um neue Versionen des moduls zu integrieren, muss das add neu ausgeführt werden, da die Version in yarn.lock festgelegt ist```
+
+## Steps for creating a Module in Typescript
+
+```In diesem Projekt wird ein custom modul integriert. Siehe für kurze Beschreibung zum Erstellen eines Moduls folgend: ```
+
+npx yarn add --dev typescript ```dev dependency typescript hinzufügen```
+
+npx tsc --init ```in der tsconfig.json output directory definieren und definitions mit aktivieren```
+tsc ```danach in der package.json das build script mit einbauen```
+```danach das main auf die generierte index.js und für die types die type propertys auf index.d.ts festlegen```
+
+
+
