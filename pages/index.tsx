@@ -1,15 +1,13 @@
 import type { NextPage } from 'next'
-import CriminalComponent from '../components/CriminalComponent.component';
+import CriminalComponent, { CriminalComponentInterface } from '../components/CriminalComponent.component';
 
+const DEMO_DATA:CriminalComponentInterface[]=[{firstname:"Hans", lastname:"Wurst", children:"ist ein ganz toller Typ."}, 
+  {firstname:"Susi", lastname:"Sorglos", children:"ist eine ganz Nette."}, {firstname:"Susi1", lastname:"Sorglos1", children:"ist eine ganz Nette."}]
 const Home: NextPage = () => {
   return <div>
-      <CriminalComponent firstname='Hans' lastname='Wurst'>
-        ist ein ganz toller Typ
-      </CriminalComponent>
-      <CriminalComponent firstname='Susie' lastname='Sorglos'>
-        ist ne ganz Nette.
-      </CriminalComponent>
-
+    {DEMO_DATA.map((criminal:CriminalComponentInterface)=><CriminalComponent firstname={criminal.firstname} lastname={criminal.lastname}>{criminal.children}</CriminalComponent>)}
+    <hr />
+    {DEMO_DATA.map((criminal:CriminalComponentInterface)=><CriminalComponent {...criminal} />)}
   </div>
 }
 

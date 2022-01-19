@@ -1,4 +1,4 @@
-interface CriminalComponentInterface {
+export interface CriminalComponentInterface {
     firstname: string,
     lastname: string,
     children: any
