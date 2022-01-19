@@ -20,7 +20,7 @@ const CriminalPage: NextPage<Criminal> = (criminal: Criminal) => {
             {criminal.forename}
         </div>
         <div>
-            {criminal.name}!987
+            {criminal.name}
         </div>
         {criminal.error?<div>{criminal.error}</div>:<></>}
     </div>
