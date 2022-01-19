@@ -1263,9 +1263,9 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-"next-learn-red-notice-api@https://github.com/karrycgi/next-learn-red-notice-api.git":
+"next-learn-red-notice-api@git+https://github.com/karrycgi/next-learn-red-notice-api.git":
   version "1.0.0"
-  resolved "https://github.com/karrycgi/next-learn-red-notice-api.git#a9a1b1ae6bc414ca7be3286f729f2cdfeec840cc"
+  resolved "git+https://github.com/karrycgi/next-learn-red-notice-api.git#19bbc1a4f5401eb3abc30e64b9c43fc8445eb4d4"
   dependencies:
     axios "^0.24.0"
 
