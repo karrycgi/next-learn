@@ -1,0 +1,8 @@
+.value {
+    transition: .25s linear all;
+    color: #000;
+}
+
+.value.odd {
+    color: #f00;
+}

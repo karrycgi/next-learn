@@ -32,7 +32,7 @@ export default class NumPicker extends React.Component<Props, State> {
     render(): JSX.Element {
         return <div>
             <button onClick={() => this.add((this.props.stepSize || 1) * (-1))}>-</button>
-            <span>{this.state.count}</span>
+            <span className={this.state.count%2 === 1?"value odd":"value"}>{this.state.count}</span>
             <button onClick={() => this.add(this.props.stepSize || 1)}>+</button>
         </div>
     }
