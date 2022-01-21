@@ -1,13 +1,17 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { RedNoticeDetails, detailsRedNotice, RedNoticeQuery, RedNoticeResult, searchRedNotice } from "next-learn-red-notice-api"
 import { ParsedUrlQuery } from "querystring";
+import LayoutComponent from '../../components/Layout.component';
+import { CriminalSidebarProps } from '../../components/CriminalsSidebar.component';
 import CriminalsSidebar from "../../components/CriminalsSidebar.component";
+import RedNotice from "next-learn-red-notice-api/build/lib/RedNotice.all";
 
 interface Criminal {
     forename: string,
     name: string,
     thumbnail: string,
-    error?: string
+    error?: string,
+    sidebarcriminals: CriminalSidebarProps
 }
 
 interface Pageable extends ParsedUrlQuery {
@@ -17,12 +21,14 @@ interface Pageable extends ParsedUrlQuery {
 const CriminalPage: NextPage<Criminal> = (criminal: Criminal) => {
     return <div>
        
+        <LayoutComponent title="Homepage" description='Homepage' sidebarCriminals={criminal.sidebarcriminals}>
         <div>
-            <h1>Criminal Name</h1>
+        <h1>Criminal Name</h1>
             {criminal.forename}  {criminal.name}
-        </div>
         
         {criminal.error?<div>{criminal.error}</div>:<></>}
+        </div>
+    </LayoutComponent>
     </div>
 }
 
@@ -49,23 +55,27 @@ export const getStaticPaths: GetStaticPaths<Pageable> = async () => {
 
 export const getStaticProps: GetStaticProps<Criminal> = async (context: any) => {
     const { id } = context.params as Pageable
-    try {
+        const notices: RedNotice[] = await (await searchRedNotice())._embedded.notices
         const details: RedNoticeDetails = await detailsRedNotice(id)
         return {
             props: {
                 forename: details.forename,
                 name: details.name,
-                thumbnail: details._links.thumbnail?.href || ""
+                thumbnail: details._links.thumbnail?.href || "", 
+                sidebarcriminals: {
+                    notices: notices
+                }
+
             }
         }
-    } catch (e: any) {
-        return {
-            props: {
-                forename: "jon",
-                name: "doe",
-                thumbnail: "",
-                error: e.message || undefined
-            }
-        }
-    }
-}
+    } 
+    // catch (e: any) {
+    //     return {
+    //         props: {
+    //             forename: "jon",
+    //             name: "doe",
+    //             thumbnail: "",
+    //             error: e.message || undefined
+    //         }
+    //     }
+    // }
