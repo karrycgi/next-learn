@@ -9,7 +9,7 @@ const HeaderComponent = (): JSX.Element => {
                     <li> <Link href="/"><a>Home</a></Link> </li>
                 </ul>
             </nav>
-            <p><img src={require('./styles/headerImage.png').default} />
+            <p><img src='headerImage.png' width="900"/>
             <h1>
                 Willkommen in unserer Verbrecherseite
             </h1>
