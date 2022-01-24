@@ -22,6 +22,19 @@ const Home: NextPage<CriminalSidebarProps> = (criminals: CriminalSidebarProps) =
   </div>
 }
 
+<body>
+      <article>
+         <header>
+              <h2>Die Kopfzeile des Abschnittes</h2>
+              <p>Der Absatz des Textes.</p>
+         </header>
+      </article>
+   </body>
+
+
+
+
+
 
 
 export const getStaticProps: GetStaticProps<CriminalSidebarProps> = async (context: any) => {

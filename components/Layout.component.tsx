@@ -1,5 +1,6 @@
 import Head from "next/head";
 import CriminalsSidebar, { CriminalSidebarProps } from "./CriminalsSidebar.component";
+import HeaderComponent from "./Header.component";
 
 
 interface LayoutComponents{
@@ -15,6 +16,7 @@ export default function(components: LayoutComponents): JSX.Element{
         <Head>
         <title>{components.title}</title>
         </Head>
+        <HeaderComponent/>
         <CriminalsSidebar notices={components.sidebarCriminals.notices}/>
 
         <div>
