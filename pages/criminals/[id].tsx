@@ -5,11 +5,9 @@ import LayoutComponent from '../../components/Layout.component';
 import { CriminalSidebarProps } from '../../components/CriminalsSidebar.component';
 import CriminalsSidebar from "../../components/CriminalsSidebar.component";
 import RedNotice from "next-learn-red-notice-api/build/lib/RedNotice.all";
+import CriminalComponent from "../../components/CriminalComponent.component";
 
-interface Criminal {
-    forename: string,
-    name: string,
-    thumbnail: string,
+interface Criminal extends RedNoticeDetails {
     error?: string,
     sidebarcriminals: CriminalSidebarProps
 }
@@ -20,15 +18,9 @@ interface Pageable extends ParsedUrlQuery {
 
 const CriminalPage: NextPage<Criminal> = (criminal: Criminal) => {
     return <div>
-       
         <LayoutComponent title="Homepage" description='Homepage' sidebarCriminals={criminal.sidebarcriminals}>
-        <div>
-        <h1>Criminal Name</h1>
-            {criminal.forename}  {criminal.name}
-        
-        {criminal.error?<div>{criminal.error}</div>:<></>}
-        </div>
-    </LayoutComponent>
+            <CriminalComponent {...criminal}/>
+        </LayoutComponent>
     </div>
 }
 
@@ -46,7 +38,6 @@ export const getStaticPaths: GetStaticPaths<Pageable> = async () => {
                 params: {
                     id: el.entity_id
                 }
-
             }
         }),
         fallback: false
@@ -55,27 +46,15 @@ export const getStaticPaths: GetStaticPaths<Pageable> = async () => {
 
 export const getStaticProps: GetStaticProps<Criminal> = async (context: any) => {
     const { id } = context.params as Pageable
-        const notices: RedNotice[] = await (await searchRedNotice())._embedded.notices
-        const details: RedNoticeDetails = await detailsRedNotice(id)
-        return {
-            props: {
-                forename: details.forename,
-                name: details.name,
-                thumbnail: details._links.thumbnail?.href || "", 
-                sidebarcriminals: {
-                    notices: notices
-                }
-
+    const notices: RedNotice[] = await (await searchRedNotice())._embedded.notices
+    const details: RedNoticeDetails = await detailsRedNotice(id)
+    return {
+        props: {
+            ...details,
+            sidebarcriminals: {
+                notices: notices
             }
         }
-    } 
-    // catch (e: any) {
-    //     return {
-    //         props: {
-    //             forename: "jon",
-    //             name: "doe",
-    //             thumbnail: "",
-    //             error: e.message || undefined
-    //         }
-    //     }
-    // }
+    }
+}
+
