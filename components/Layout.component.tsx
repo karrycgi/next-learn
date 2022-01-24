@@ -1,6 +1,8 @@
 import Head from "next/head";
 import CriminalsSidebar, { CriminalSidebarProps } from "./CriminalsSidebar.component";
 import HeaderComponent from "./Header.component";
+import BannerComponent from "./BannerComponent.component";
+import styles from "../styles/Home.module.css";
 
 
 interface LayoutComponents{
@@ -10,18 +12,29 @@ interface LayoutComponents{
     sidebarCriminals: CriminalSidebarProps
 }
 
-export default function(components: LayoutComponents): JSX.Element{
+export default function LayoutComponent (components: LayoutComponents): JSX.Element{
 
     return <div>
         <Head>
-        <title>{components.title}</title>
+            <title>{components.title}</title>
         </Head>
-        <HeaderComponent/>
-        <CriminalsSidebar notices={components.sidebarCriminals.notices}/>
 
-        <div>
+        <HeaderComponent/>
+        <section className={styles.sectionLeft}> 
+            <CriminalsSidebar notices={components.sidebarCriminals.notices}/>
+        </section>
+
+        <section className={styles.sectionMiddle}> 
+            <div>
+                <p>Have you seen this gangster? Call 900 + 11</p>
             {components.children}
-        </div>
+            </div>
+        </section>
+        
+        <section className={styles.sectionRight}>
+            <BannerComponent/>
+        </section>
+      
         
         
         </div>

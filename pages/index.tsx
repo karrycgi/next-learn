@@ -1,25 +1,16 @@
 import type { GetStaticProps, NextPage } from 'next'
 import { searchRedNotice } from 'next-learn-red-notice-api';
 import RedNotice, { RedNoticeResult } from 'next-learn-red-notice-api/build/lib/RedNotice.all';
-import  { CriminalComponentInterface } from '../components/CriminalComponent.component';
 import { CriminalSidebarProps } from '../components/CriminalsSidebar.component';
 import LayoutComponent from '../components/Layout.component';
-import styles from "../styles/Home.module.css"
+import styles from "../styles/Home.module.css";
 
-
-const DEMO_DATA: CriminalComponentInterface[] = [{ firstname: "Hans", lastname: "Wurst", children: "ist ein ganz toller Typ." },
-{ firstname: "Susi", lastname: "Sorglos", children: "ist eine ganz Nette." }, { firstname: "Susi1", lastname: "Sorglos1", children: "ist eine ganz Nette." }]
-
-const DEMO_DATA_LIST: string[] = ["Hans", "Peter", "Paul", "Susi", "Gabi", "Maria"];
 
 const Home: NextPage<CriminalSidebarProps> = (criminals: CriminalSidebarProps) => {
   return <div>
-    <LayoutComponent title="Homepage" description='Homepage' sidebarCriminals={criminals}>
-        <div className={styles.title}>
-            Homepage Content
+          <LayoutComponent title="Homepage" description='Homepage' sidebarCriminals={criminals}>
+          </LayoutComponent>
         </div>
-    </LayoutComponent>
-  </div>
 }
 
 <body>
@@ -30,9 +21,6 @@ const Home: NextPage<CriminalSidebarProps> = (criminals: CriminalSidebarProps) =
          </header>
       </article>
    </body>
-
-
-
 
 
 
