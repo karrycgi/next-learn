@@ -7,15 +7,33 @@ export interface CriminalSidebarProps {
     notices: RedNotice[]
 }
 
-export default class CriminalsSidebar extends React.Component<CriminalSidebarProps> {
+export interface CriminalSidebarState {
+    notices: RedNotice[]
+    query: string
+}
+
+export default class CriminalsSidebar extends React.Component<CriminalSidebarProps, CriminalSidebarState> {
 
     constructor(props:CriminalSidebarProps){
         super(props)
-    }  
+        this.state={
+            notices:props.notices,
+            query:""
+        }
+        this.onquery=this.onquery.bind(this)
+    }
+    onquery(event:any):void{
+        this.setState({
+            ...this.state,
+            query:event.target.value,
+            notices: this.props.notices.filter((notice:RedNotice)=> notice.name.includes(this.state.query) || notice.forename.includes(this.state.query))
+        })
+    }
 
     render : () => JSX.Element = () => {
-        return <div>        
-        <nav className={styles.nav}>{this.props.notices.map((notice: RedNotice, key:number) => <Link href={`/criminals/${encodeURIComponent(notice.entity_id)}`} key="key"><a>{`${notice.forename} ${notice.name}`}</a></Link>)}</nav>
+        return <div>
+            <input value={this.state.query} onChange={this.onquery} />
+        <nav className={styles.nav}>{this.state.notices.map((notice: RedNotice, key:number) => <Link href={`/criminals/${encodeURIComponent(notice.entity_id)}`} key="key"><a>{`${notice.forename} ${notice.name}`}</a></Link>)}</nav>
     </div>
     }
 }
