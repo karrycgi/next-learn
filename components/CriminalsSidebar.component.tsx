@@ -26,7 +26,15 @@ export default class CriminalsSidebar extends React.Component<CriminalSidebarPro
         this.setState({
             ...this.state,
             query:event.target.value,
-            notices: this.props.notices.filter((notice:RedNotice)=> notice.name.includes(this.state.query) || notice.forename.includes(this.state.query))
+            notices: this.props.notices.filter((notice:RedNotice)=> notice.name.includes(this.state.query.toUpperCase()) || notice.forename.includes(this.state.query.toUpperCase())),
+            
+        })
+    }
+    componentDidUpdate(prevProps:CriminalSidebarProps,prevState: CriminalSidebarState){
+        if(prevState.query !== this.state.query)
+        this.setState({
+            ...this.state,
+            notices: this.props.notices.filter((notice:RedNotice)=> notice.name.includes(this.state.query.toUpperCase()) || notice.forename.includes(this.state.query.toUpperCase()))
         })
     }
 
