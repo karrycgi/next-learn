@@ -7,7 +7,7 @@ interface LayoutComponents{
     title: string,
     description: string,
     children: any,
-    sidebarCriminals: CriminalSidebarProps
+    sidebarCriminals?: CriminalSidebarProps
 }
 
 export default function LayoutComponent(components: LayoutComponents): JSX.Element{
@@ -17,7 +17,7 @@ export default function LayoutComponent(components: LayoutComponents): JSX.Eleme
         <title>{components.title}</title>
         </Head>
         <HeaderComponent/>
-        <CriminalsSidebar notices={components.sidebarCriminals.notices}/>
+        {components.sidebarCriminals && <CriminalsSidebar notices={components.sidebarCriminals.notices}/>}
 
         <div>
             {components.children}

@@ -7,6 +7,7 @@ const HeaderComponent = (): JSX.Element => {
         <nav>
             <ul>
                 <li> <Link href="/"><a>Home</a></Link> </li>
+                <li> <Link href="/criminals/search"><a>Search</a></Link> </li>
             </ul>
         </nav>
         <p><Image src={LOGO} width={1920}></Image>
