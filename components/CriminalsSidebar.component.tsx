@@ -1,4 +1,3 @@
-import { query } from "express";
 import RedNotice from "next-learn-red-notice-api/build/lib/RedNotice.all";
 import Link from "next/link";
 import React from "react";
