@@ -9,7 +9,7 @@ const HeaderComponent = (): JSX.Element => {
                 <li> <Link href="/"><a>Home</a></Link> </li>
             </ul>
         </nav>
-        <p><Image src={LOGO} width={1920}></Image>
+        <p><Image alt="TODO" src={LOGO} width={1920}></Image>
             <h1>
                 Willkommen in unserer Verbrecherseite
             </h1>

@@ -32,7 +32,7 @@ const CriminalComponent = (criminal: RedNoticeDetails): JSX.Element => {
         </div>
         <div className={styles.two}>
             <h2>Profilbild</h2>
-            {criminal._links.thumbnail?.href && <Image src={criminal._links.thumbnail?.href} width={300} height={300} /> }
+            {criminal._links.thumbnail?.href && <Image alt="TODO" src={criminal._links.thumbnail?.href} width={300} height={300} /> }
             {criminal.distinguishing_marks && <p>Besondere Merkmale: {criminal.distinguishing_marks}</p> }
         </div>
         <div className={styles.three}>
