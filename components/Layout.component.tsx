@@ -10,7 +10,7 @@ interface LayoutComponents{
     sidebarCriminals: CriminalSidebarProps
 }
 
-export default function(components: LayoutComponents): JSX.Element{
+export default function LayoutComponent(components: LayoutComponents): JSX.Element{
 
     return <div>
         <Head>
