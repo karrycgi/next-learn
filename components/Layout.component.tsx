@@ -1,15 +1,17 @@
 import Head from "next/head";
 import CriminalsSidebar, { CriminalSidebarProps } from "./CriminalsSidebar.component";
 import HeaderComponent from "./Header.component";
-import BannerComponent from "./BannerComponent.component";
+import BannerContent, { bannerContent, bannerContentI } from "../utils/BannerContent.utils";
 import styles from "../styles/Home.module.css";
+import BannerSidebar, {BannerSidebarProps} from "./BannerSidebar.component";
 
 
 interface LayoutComponents{
     title: string,
     description: string,
     children: any,
-    sidebarCriminals: CriminalSidebarProps
+    sidebarCriminals: CriminalSidebarProps,
+    banners: Array<bannerContent>
 }
 
 export default function LayoutComponent (components: LayoutComponents): JSX.Element{
@@ -27,15 +29,14 @@ export default function LayoutComponent (components: LayoutComponents): JSX.Elem
         <section className={styles.sectionMiddle}> 
             <div>
                 <p>Have you seen this gangster? Call 900 + 11</p>
-            {components.children}
+                {components.children}
             </div>
         </section>
         
         <section className={styles.sectionRight}>
-            <BannerComponent/>
+            <BannerSidebar />
         </section>
       
-        
-        
         </div>
 }
+

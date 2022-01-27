@@ -3,24 +3,16 @@ import { searchRedNotice } from 'next-learn-red-notice-api';
 import RedNotice, { RedNoticeResult } from 'next-learn-red-notice-api/build/lib/RedNotice.all';
 import { CriminalSidebarProps } from '../components/CriminalsSidebar.component';
 import LayoutComponent from '../components/Layout.component';
-import styles from "../styles/Home.module.css";
+import BannerContent, { bannerContent, bannerContentI } from "../utils/BannerContent.utils";
 
 
-const Home: NextPage<CriminalSidebarProps> = (criminals: CriminalSidebarProps) => {
+const Home: NextPage<CriminalSidebarProps> = (criminals: CriminalSidebarProps, bannerLotsOf:bannerContent[]) => {
   return <div>
-          <LayoutComponent title="Homepage" description='Homepage' sidebarCriminals={criminals}>
+          <LayoutComponent title="Homepage" description='Homepage'
+                  sidebarCriminals={criminals} banners={bannerLotsOf}>
           </LayoutComponent>
         </div>
 }
-
-<body>
-      <article>
-         <header>
-              <h2>Die Kopfzeile des Abschnittes</h2>
-              <p>Der Absatz des Textes.</p>
-         </header>
-      </article>
-   </body>
 
 
 

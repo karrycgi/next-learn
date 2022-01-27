@@ -6,6 +6,7 @@ import { CriminalSidebarProps } from '../../components/CriminalsSidebar.componen
 import CriminalsSidebar from "../../components/CriminalsSidebar.component";
 import RedNotice from "next-learn-red-notice-api/build/lib/RedNotice.all";
 import CriminalComponent from "../../components/CriminalComponent.component";
+import BannerContent, {bannerContent} from "../../utils/BannerContent.utils";
 
 interface Criminal extends RedNoticeDetails {
     error?: string,
@@ -16,9 +17,10 @@ interface Pageable extends ParsedUrlQuery {
     id: string;
 }
 
-const CriminalPage: NextPage<Criminal> = (criminal: Criminal) => {
+const CriminalPage: NextPage<Criminal> = (criminal: Criminal, lotOfBanners: bannerContent[]) => {
     return <div>
-        <LayoutComponent title="Homepage" description='Homepage' sidebarCriminals={criminal.sidebarcriminals}>
+        <LayoutComponent title="Homepage" description='Homepage' 
+                sidebarCriminals={criminal.sidebarcriminals} banners = { lotOfBanners}>
             <CriminalComponent {...criminal}/>
         </LayoutComponent>
     </div>
