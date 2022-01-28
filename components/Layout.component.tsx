@@ -1,9 +1,9 @@
 import Head from "next/head";
 import CriminalsSidebar, { CriminalSidebarProps } from "./CriminalsSidebar.component";
 import HeaderComponent from "./Header.component";
-import BannerContent, { bannerContent, bannerContentI } from "../utils/BannerContent.utils";
 import styles from "../styles/Home.module.css";
 import BannerSidebar from "./BannerSidebar.component";
+import { BannerContent } from "../utils/BannerContent.utils";
 
 
 interface LayoutComponents{
@@ -11,7 +11,7 @@ interface LayoutComponents{
     description: string,
     children: any,
     sidebarCriminals: CriminalSidebarProps,
-    banners: Array<bannerContent>
+    banners: Array<BannerContent>
 }
 
 export default function LayoutComponent (components: LayoutComponents): JSX.Element{
