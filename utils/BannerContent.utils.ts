@@ -48,8 +48,8 @@ export function getAllBannaContent() {
     return contentArr;
 }
 
-export const BannerContent = () : bannerContent[] => {
+const getBannerContent :() => bannerContent[]= () => {
     return getAllBannaContent();
 }
 
-export default BannerContent;
+export default getBannerContent;

@@ -3,7 +3,7 @@ import CriminalsSidebar, { CriminalSidebarProps } from "./CriminalsSidebar.compo
 import HeaderComponent from "./Header.component";
 import BannerContent, { bannerContent, bannerContentI } from "../utils/BannerContent.utils";
 import styles from "../styles/Home.module.css";
-import BannerSidebar, {BannerSidebarProps} from "./BannerSidebar.component";
+import BannerSidebar from "./BannerSidebar.component";
 
 
 interface LayoutComponents{
@@ -34,7 +34,7 @@ export default function LayoutComponent (components: LayoutComponents): JSX.Elem
         </section>
         
         <section className={styles.sectionRight}>
-            <BannerSidebar />
+            <BannerSidebar banners={components.banners}/>
         </section>
       
         </div>

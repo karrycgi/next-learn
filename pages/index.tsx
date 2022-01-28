@@ -3,19 +3,17 @@ import { searchRedNotice } from 'next-learn-red-notice-api';
 import RedNotice, { RedNoticeResult } from 'next-learn-red-notice-api/build/lib/RedNotice.all';
 import { CriminalSidebarProps } from '../components/CriminalsSidebar.component';
 import LayoutComponent from '../components/Layout.component';
-import BannerContent, { bannerContent, bannerContentI } from "../utils/BannerContent.utils";
+import getBannerContent from '../utils/BannerContent.utils';
 
 
-const Home: NextPage<CriminalSidebarProps> = (criminals: CriminalSidebarProps, bannerLotsOf:bannerContent[]) => {
+const Home: NextPage<CriminalSidebarProps> = (criminals: CriminalSidebarProps) => {
+  const bannerLotsOf= getBannerContent()
   return <div>
           <LayoutComponent title="Homepage" description='Homepage'
                   sidebarCriminals={criminals} banners={bannerLotsOf}>
           </LayoutComponent>
         </div>
 }
-
-
-
 
 export const getStaticProps: GetStaticProps<CriminalSidebarProps> = async (context: any) => {
   try {

@@ -1,21 +1,27 @@
+import Link from "next/link";
 import React from "react";
 import BannerContent, { bannerContent, bannerContentI } from "../utils/BannerContent.utils";
 
-
-export interface BannerSidebarProps {
+interface Props {
     banners: bannerContent[]
 }
+interface State {
 
-export default class BannerSidebar extends React.Component {
+}
 
-    constructor(props:BannerSidebarProps){
+export default class BannerSidebar extends React.Component <Props, State> {
+
+    constructor(props:Props){
         super(props);
         getArray();
     }  
 
     render : () => JSX.Element = () => {
-        return <div>
-           
+        return <div>{this.props.banners.map((banner: bannerContent, key:number) => <div>
+            <h3>{banner.bannaName}</h3>
+            <img src={banner.bannaImgSrc} alt="" width="100%"/>
+            </div>)}
+            
     </div>
     }
 }
