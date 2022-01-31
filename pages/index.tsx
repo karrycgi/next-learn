@@ -3,11 +3,14 @@ import { searchRedNotice } from 'next-learn-red-notice-api';
 import RedNotice, { RedNoticeResult } from 'next-learn-red-notice-api/build/lib/RedNotice.all';
 import { CriminalSidebarProps } from '../components/CriminalsSidebar.component';
 import LayoutComponent from '../components/Layout.component';
-import styles from "../styles/Home.module.css"
+import getBannerContent from '../utils/BannerContent.utils';
+
 
 const Home: NextPage<CriminalSidebarProps> = (criminals: CriminalSidebarProps) => {
+  const bannerLotsOf= getBannerContent()
   return <div>
-    <LayoutComponent title="Homepage" description='Homepage' sidebarCriminals={criminals}>
+
+    <LayoutComponent title="Homepage" description='Homepage' sidebarCriminals={criminals}  banners={bannerLotsOf}>
       <div className={styles.title}>
         Homepage Content
       </div>
@@ -23,12 +26,6 @@ const Home: NextPage<CriminalSidebarProps> = (criminals: CriminalSidebarProps) =
     </header>
   </article>
 </body>
-
-
-
-
-
-
 
 export const getStaticProps: GetStaticProps<CriminalSidebarProps> = async (context: any) => {
   try {
