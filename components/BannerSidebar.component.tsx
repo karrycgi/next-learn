@@ -18,7 +18,9 @@ export default class BannerSidebar extends React.Component <Props, State> {
     render : () => JSX.Element = () => {
         return <div>{this.props.banners.map((banner: BannerContent, key:number) => <div key={key}>
             <h3>{banner.cbannaName}</h3>
+            <a href={banner.cbannaImgLink}>
             <img src={banner.cbannaImgSrc} alt="" width="100%"/>
+            </a>
             </div>)}
     </div>
     }
