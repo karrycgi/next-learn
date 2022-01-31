@@ -26,7 +26,7 @@ const CriminalSearchPage : NextPage = () => {
     return <div>
 
         
-        <LayoutComponent title="Search" description="Search Form for querying particular criminals" >
+        <LayoutComponent title="Search" description="Search Form for querying particular criminals"  >
             <RequestQuery onSub={onSub}></RequestQuery>       
         </LayoutComponent>        
     </div>
