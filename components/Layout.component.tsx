@@ -12,7 +12,7 @@ interface LayoutComponents{
     children: any,
 
     sidebarCriminals?: CriminalSidebarProps
-    banners: Array<BannerContent>
+    banners?: Array<BannerContent>
 
 }
 
@@ -34,14 +34,17 @@ export default function LayoutComponent (components: LayoutComponents): JSX.Elem
 
         <section className={styles.sectionMiddle}> 
             <div>
+                {/* ROUTER??? Wenn pfad = localhost:3000/criminals/search 
+                    Dann p nicht anzeigen*/}
                 <p>Have you seen this gangster? Call 900 + 11</p>
                 {components.children}
             </div>
         </section>
         
-        <section className={styles.sectionRight}>
+        {components.banners && <section className={styles.sectionRight}>
             <BannerSidebar banners={components.banners}/>
-        </section>
+        </section>}
+        
       
         </div>
 }

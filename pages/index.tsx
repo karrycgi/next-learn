@@ -4,7 +4,7 @@ import RedNotice, { RedNoticeResult } from 'next-learn-red-notice-api/build/lib/
 import { CriminalSidebarProps } from '../components/CriminalsSidebar.component';
 import LayoutComponent from '../components/Layout.component';
 import getBannerContent from '../utils/BannerContent.utils';
-
+import styles from "../styles/Home.module.css"
 
 const Home: NextPage<CriminalSidebarProps> = (criminals: CriminalSidebarProps) => {
   const bannerLotsOf= getBannerContent()
