@@ -1,6 +1,6 @@
 import {  NextPage } from "next"
 import { RedNoticeQuery } from "next-learn-red-notice-api/build/lib/RedNotice.all"
-import UserInput from "../../components/input/UserInput.component"
+import RequestQuery from "../../components/dynamic/RequestQuery.component"
 import LayoutComponent from "../../components/Layout.component"
 
 
@@ -8,7 +8,7 @@ const CriminalSearchPage : NextPage = () => {
     const onSub : (query: RedNoticeQuery) =>  void = async (query: RedNoticeQuery) => {
         //TO DO:
         //  do whatever request you want with query
-        console.log(query)
+        // console.log(query)
     }
     
     const query :RedNoticeQuery =  {
@@ -27,7 +27,7 @@ const CriminalSearchPage : NextPage = () => {
 
         
         <LayoutComponent title="Search" description="Search Form for querying particular criminals" >
-                <UserInput value={query}  onSub={onSub}/>
+            <RequestQuery onSub={onSub}></RequestQuery>       
         </LayoutComponent>        
     </div>
 }
