@@ -14,7 +14,9 @@ interface LayoutComponents{
     banners: Array<BannerContent>
 }
 
+
 export default function LayoutComponent (components: LayoutComponents): JSX.Element{
+
 
     return <div>
         <Head>
