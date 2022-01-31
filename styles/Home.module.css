@@ -73,6 +73,21 @@
   max-width: 800px;
 }
 
+.headerImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.bannerImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+
 .card {
   margin: 1rem;
   padding: 1.5rem;
@@ -114,3 +129,22 @@
     flex-direction: column;
   }
 }
+
+.sectionLeft {
+  float: left;
+  margin: 0 1.5%;
+  width: 20%;
+}
+
+.sectionMiddle {
+  float: left;
+  margin: 0 1.5%;
+  width: 59%;
+}
+
+.sectionRight {
+  float: left;
+  margin: 0 1.5%;
+  width: 10%;
+}
+
