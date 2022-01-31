@@ -10,8 +10,10 @@ interface LayoutComponents{
     title: string,
     description: string,
     children: any,
-    sidebarCriminals: CriminalSidebarProps,
+
+    sidebarCriminals?: CriminalSidebarProps
     banners: Array<BannerContent>
+
 }
 
 
@@ -24,9 +26,11 @@ export default function LayoutComponent (components: LayoutComponents): JSX.Elem
         </Head>
 
         <HeaderComponent/>
+
         <section className={styles.sectionLeft}> 
-            <CriminalsSidebar notices={components.sidebarCriminals.notices}/>
+            {components.sidebarCriminals && <CriminalsSidebar notices={components.sidebarCriminals.notices}/>}
         </section>
+
 
         <section className={styles.sectionMiddle}> 
             <div>
