@@ -15,7 +15,7 @@ export default class CriminalsSidebar extends React.Component<CriminalSidebarPro
 
     render : () => JSX.Element = () => {
         return <div>        
-        <nav className={styles.nav}>{this.props.notices.map((notice: RedNotice, key:number) => <Link href={`/criminals/${encodeURIComponent(notice.entity_id)}`} key="key"><a>{`${notice.forename} ${notice.name}`}</a></Link>)}</nav>
+        <nav className={styles.nav}>{this.props.notices.map((notice: RedNotice, key:number) => <Link href={`/criminals/${encodeURIComponent(notice.entity_id)}`} key={key}><a>{`${notice.forename} ${notice.name}`}</a></Link>)}</nav>
     </div>
     }
 }

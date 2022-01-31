@@ -19,7 +19,7 @@ _links: RedNoticeLinks;
 
 const CriminalComponent = (props: RedNoticeDetails) : JSX.Element => {
     return <div>
-        <h1>{props.name}, {props.forename}</h1>
+        <p>{props.name}, {props.forename}</p>
 
         <p>Geschlecht: {sexIdToString(props.sex_id)}</p>
         <p>{props.place_of_birth}</p>
