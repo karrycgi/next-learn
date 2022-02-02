@@ -19,8 +19,8 @@ export default class RequestQuery extends React.Component<Props, State> {
                 ageMin: 1,
                 ageMax: 100,
                 arrestWarrantCountryId: "",
-                forename: "NURLAN",
-                name: "BAGHIROV",
+                forename: "",
+                name: "",
                 nationality: "",
                 page: 1,
                 resultPerPage: 5,
@@ -28,7 +28,6 @@ export default class RequestQuery extends React.Component<Props, State> {
             }
         }
     }
-    // this.state.searchFormValue.name === "" || this.state.searchFormValue.forename === "" ||
     checkIfAllFieldsFilled: () => boolean = () => {
         const hasEmptyMandatoryFields: boolean = ( this.state.searchFormValue.page === undefined || this.state.searchFormValue.resultPerPage === undefined)
         const hasValidGender: boolean = this.state.searchFormValue.sexId === "M" || this.state.searchFormValue.sexId=== "F" || this.state.searchFormValue.sexId=== "U"
@@ -43,7 +42,7 @@ export default class RequestQuery extends React.Component<Props, State> {
         })
     }
 
-    onClick: (query: RedNoticeQuery)=> void = (query: RedNoticeQuery) => {
+    onClick: ()=> void = () => {
         const isRdy  = this.checkIfAllFieldsFilled();
         if(isRdy){
             this.props.onSub(this.state.searchFormValue)
@@ -55,7 +54,7 @@ export default class RequestQuery extends React.Component<Props, State> {
     render(): JSX.Element {
         return <div>
             <UserInput onChange={this.onChange} value={this.state.searchFormValue}></UserInput>
-            <button onClick={()=> this.onClick(this.state.searchFormValue) }> Senden </button>
+            <button onClick={()=> this.onClick() }> Senden </button>
             <div>{JSON.stringify(this.state.searchFormValue)}</div>
         </div>
     }
