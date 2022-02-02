@@ -1265,7 +1265,7 @@ natural-compare@^1.4.0:
 
 "next-learn-red-notice-api@git+https://github.com/karrycgi/next-learn-red-notice-api.git":
   version "1.0.0"
-  resolved "git+https://github.com/karrycgi/next-learn-red-notice-api.git#19bbc1a4f5401eb3abc30e64b9c43fc8445eb4d4"
+  resolved "git+https://github.com/karrycgi/next-learn-red-notice-api.git#d56f4e87bf136d69db22005dec37cd7eb0eb39ce"
   dependencies:
     axios "^0.24.0"
 

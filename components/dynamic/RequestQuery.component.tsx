@@ -18,21 +18,20 @@ export default class RequestQuery extends React.Component<Props, State> {
             searchFormValue: {
                 ageMin: 1,
                 ageMax: 100,
-                arrestWarrantCountryId: "DE",
-                forename: "Boris",
-                name: "Gedöns",
-                nationality: "DE",
+                arrestWarrantCountryId: "",
+                forename: "",
+                name: "",
+                nationality: "",
                 page: 1,
                 resultPerPage: 5,
                 sexId: "M"
             }
         }
     }
-
     checkIfAllFieldsFilled: () => boolean = () => {
-        const hasEmptyFields: boolean = Object.values(this.state.searchFormValue).some(element => element === "" || element === undefined)
+        const hasEmptyMandatoryFields: boolean = ( this.state.searchFormValue.page === undefined || this.state.searchFormValue.resultPerPage === undefined)
         const hasValidGender: boolean = this.state.searchFormValue.sexId === "M" || this.state.searchFormValue.sexId=== "F" || this.state.searchFormValue.sexId=== "U"
-        return (!hasEmptyFields && hasValidGender)
+        return (!hasEmptyMandatoryFields && hasValidGender)
     }
 
     onChange: (query: RedNoticeQuery) => void = (query: RedNoticeQuery) => {
@@ -43,7 +42,7 @@ export default class RequestQuery extends React.Component<Props, State> {
         })
     }
 
-    onClick: (query: RedNoticeQuery)=> void = (query: RedNoticeQuery) => {
+    onClick: ()=> void = () => {
         const isRdy  = this.checkIfAllFieldsFilled();
         if(isRdy){
             this.props.onSub(this.state.searchFormValue)
@@ -55,7 +54,7 @@ export default class RequestQuery extends React.Component<Props, State> {
     render(): JSX.Element {
         return <div>
             <UserInput onChange={this.onChange} value={this.state.searchFormValue}></UserInput>
-            <button onClick={()=>  this.onClick(this.state.searchFormValue) }> Senden </button>
+            <button onClick={()=> this.onClick() }> Senden </button>
             <div>{JSON.stringify(this.state.searchFormValue)}</div>
         </div>
     }
