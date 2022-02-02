@@ -1,0 +1,45 @@
+/* Create two equal columns that floats next to each other */
+.card {    
+    text-align: center;
+    height: 200px;
+  }
+
+  .cardHead {
+    
+    background-color: rgb(117, 188, 246);    
+    text-align: center;
+    height: 90px;
+  }
+
+  .columnHead {
+    float: left;
+    border: 1px outset black;
+    width: 33.3%;
+    height: 90px;
+    padding: 10px;
+  }
+
+  .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+    -webkit-box-orient: vertical;
+ }
+  .column {
+    float: left;
+    border: 1px outset black;
+    width: 33.3%;
+    height: 200px;
+    padding: 10px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    margin-top: 15px;
+  }
+
+  
