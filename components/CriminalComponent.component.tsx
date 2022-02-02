@@ -16,7 +16,6 @@ _links: RedNoticeLinks;
 */
 
 const CriminalComponent = (criminal: RedNoticeDetails): JSX.Element => {
-    console.log("CONSOLE LOG", criminal)
     return <div className={styles.wrapper}>
         <div className={styles.one}>
             <h1>{criminal.name}, {criminal.forename}</h1>

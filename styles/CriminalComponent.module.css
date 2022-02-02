@@ -7,17 +7,17 @@
 }
 
 .one {
-    grid-column: 2;
+    grid-column: 1/2;
     grid-row: 1;
   }
 
 .two {
-    grid-column: 3;
+    grid-column: 3/5;
     grid-row: 1;
 }
 
 .three{
-    grid-column: 2 / 4 ;
+    grid-column: 1 / 4 ;
     grid-row: 2;
 }
 

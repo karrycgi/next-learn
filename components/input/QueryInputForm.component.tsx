@@ -23,13 +23,13 @@ type SexIdForInterface = SexId | noSex
 // um  geschlechter diskriminierung zu vermeiden wird die sexid erweitert mit "N" für nicht angegeben
 // damit wird die Vorauswahl von keinem radio button ermöglicht 
 interface UserInputQuery {
-    forename: string;
-    name: string;
-    nationality: string;
-    ageMax: number;
-    ageMin: number;
-    sexId: SexIdForInterface;
-    arrestWarrantCountryId: string;
+    forename?: string;
+    name?: string;
+    nationality?: string;
+    ageMax?: number;
+    ageMin?: number;
+    sexId?: SexIdForInterface;
+    arrestWarrantCountryId?: string;
     page: number;
     resultPerPage: number;
 }
@@ -60,11 +60,11 @@ export default class QueryInputForm extends React.Component<Props, State> {
             
                 <div className={styles.div}>
                     <div>
-                        <label htmlFor='forename'> Vorname </label>
+                        <label htmlFor='forename'> * Vorname </label>
                         <input type="text" name="forename" value={this.props.value.forename} onChange={this.oncg} />
                     </div>
                     <div>
-                        <label htmlFor='name'> Nachname </label>
+                        <label htmlFor='name'> * Nachname </label>
                         <input type="text" name="name" value={this.props.value.name} onChange={this.oncg} />
                     </div>
                     <div>
@@ -94,11 +94,11 @@ export default class QueryInputForm extends React.Component<Props, State> {
                         <input type="text" name="arrestWarrantCountryId" value={this.props.value.arrestWarrantCountryId} onChange={this.oncg} />
                     </div>
                     <div>
-                        <label htmlFor='Seite'> Seite </label>
+                        <label htmlFor='Seite'> * Seite </label>
                         <input type="number" name="page" value={this.props.value.page} onChange={this.oncg} />
                     </div>
                     <div>
-                        <label htmlFor='Anzahl Ergebnisse pro Seite'> Anzahl Ergebnisse pro Seite </label>
+                        <label htmlFor='Anzahl Ergebnisse pro Seite'> * Anzahl Ergebnisse pro Seite </label>
                         <input type="number" name="resultPerPage" value={this.props.value.resultPerPage} onChange={this.oncg} />
                     </div>
                 </div>
