@@ -10,25 +10,29 @@ const CriminalListCard: (criminal: RedNoticeDetails) => JSX.Element = (criminal)
 
 
     return <div>
-
         <div className={styles.row}>
             <div className={styles.card}>
                 <div className={styles.column} >
                     {criminal._links.thumbnail?.href && <Image alt="TODO" src={criminal._links.thumbnail?.href} width={150} height={150} />}
                 </div>
                 <div className={styles.column}>
-                <div className={styles.text}>
+                    <div className={styles.text}>
                         <article >
-                            <p>{criminal.forename + " " + criminal.name }</p>
+                            <p>{criminal.forename + " " + criminal.name}</p>
                             <p>{criminal.date_of_birth}</p>
-                            <p>{criminal.nationalities.map((n,key) => <>{`${key+1}. Nationalität: ${n}`}<br/></>)}</p>
+                            <p>{criminal.nationalities.map((n, key) => <>{`${key + 1}. Nationalität: ${n}`}<br /></>)}</p>
                         </article>
                     </div>
                 </div>
                 <div className={styles.column}>
-                    <div className={styles.text}>
+                    <div >
                         <article >
-                            {criminal.arrest_warrants.map(inc => <>{inc.charge}</>)}
+                            <p className={styles.text}>
+                                {criminal.arrest_warrants.map(inc => <>{inc.charge}</>)}
+                            </p>
+                            <p>
+                                <a href={`/criminals/${encodeURIComponent(criminal.entity_id)}`}><button className={styles.button}>Details</button></a>
+                            </p>
                         </article>
                     </div>
                 </div>

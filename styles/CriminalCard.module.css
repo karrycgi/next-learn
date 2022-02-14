@@ -42,4 +42,24 @@
     margin-top: 15px;
   }
 
+  .button {
+    transition-duration: 0.4s;
+    background-color: red;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  
+  .button:hover {
+    background-color: white; 
+    color: black;
+    border: 2px solid red;
+    
+  }
   

@@ -5,7 +5,7 @@ import { CriminalSidebarProps } from '../components/CriminalsSidebar.component';
 import LayoutComponent from '../components/Layout.component';
 import getBannerContent from '../utils/BannerContent.utils';
 import styles from "../styles/Home.module.css"
-
+import Attributes from '../utils/Attributes.utils';
 const Home: NextPage<CriminalSidebarProps> = (criminals: CriminalSidebarProps) => {
   const bannerLotsOf= getBannerContent()
   return <div>
@@ -29,9 +29,13 @@ const Home: NextPage<CriminalSidebarProps> = (criminals: CriminalSidebarProps) =
 
 export const getStaticProps: GetStaticProps<CriminalSidebarProps> = async (context: any) => {
   try {
-    const result: RedNoticeResult = await searchRedNotice();
-    const criminals: RedNotice[] = result._embedded.notices;
-    console.log(criminals)
+
+    const result: Attributes<RedNoticeResult> = new Attributes(await searchRedNotice()) 
+
+    const criminals: RedNotice[] = result.get("_embedded").notices
+
+
+
     return {
       props: {
         notices: criminals
