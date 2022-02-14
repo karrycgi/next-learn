@@ -30,23 +30,23 @@ const CriminalPage: NextPage<Criminal> = (criminal: Criminal) => {
 export default CriminalPage
 
 
-export const getStaticPaths: GetStaticPaths<Pageable> = async () => {
-    //fetch data from API
-    const query: RedNoticeResult = await searchRedNotice()
+// export const getStaticPaths: GetStaticPaths<Pageable> = async () => {
+//     //fetch data from API
+//     const query: RedNoticeResult = await searchRedNotice()
 
-    return {
-        paths: query._embedded.notices.map((el) => {
-            return {
-                params: {
-                    id: el.entity_id
-                }
-            }
-        }),
-        fallback: false
-    }
-}
+//     return {
+//         paths: query._embedded.notices.map((el) => {
+//             return {
+//                 params: {
+//                     id: el.entity_id
+//                 }
+//             }
+//         }),
+//         fallback: false
+//     }
+// }
 
-export const getStaticProps: GetStaticProps<Criminal> = async (context: any) => {
+export const getServerSideProps: GetStaticProps<Criminal> = async (context: any) => {
     const { id } = context.params as Pageable
     const notices: RedNotice[] = await (await searchRedNotice())._embedded.notices
     const details: RedNoticeDetails = await detailsRedNotice(id)

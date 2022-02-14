@@ -6,6 +6,7 @@ import LayoutComponent from "../../components/Layout.component";
 import getBannerContent from "../../utils/BannerContent.utils";
 import styles from "../../styles/CriminalCard.module.css"
 import RedNotice from "next-learn-red-notice-api/build/lib/RedNotice.all";
+import Pagination from "../../components/Pagination.component";
 
 
 interface ExtendedRedNotice extends RedNotice   {
@@ -13,15 +14,18 @@ interface ExtendedRedNotice extends RedNotice   {
 }
 
 interface NextPageProps  {
-    noticesForSidebar: CriminalSidebarProps
-    extendedRedNotices : ExtendedRedNotice[]
+    noticesForSidebar: CriminalSidebarProps,
+    extendedRedNotices : ExtendedRedNotice[],
+    query: RedNoticeQuery,
+    maxPages: number
 }
 
 
 const CriminalsPage: NextPage<NextPageProps> = (criminals: NextPageProps) => {
-    return <div>
-
+    
+    return <div>        
         <LayoutComponent title="Criminals" description="Page of criminals" banners={getBannerContent()} sidebarCriminals={criminals.noticesForSidebar}>
+            EWQGWQE {criminals.maxPages}
             <div className={styles.row}>
                 <div className={styles.cardHead}>
                     <div className={styles.columnHead} >
@@ -40,6 +44,9 @@ const CriminalsPage: NextPage<NextPageProps> = (criminals: NextPageProps) => {
                 </div>
             </div>
             {criminals.extendedRedNotices.map(el => <CriminalListCard {...el.details} key={el.details.entity_id}></CriminalListCard>)}
+            
+            
+            <Pagination query={criminals.query} pageMax={criminals.maxPages}></Pagination>        
         </LayoutComponent>
     </div>
 }
@@ -47,10 +54,12 @@ const CriminalsPage: NextPage<NextPageProps> = (criminals: NextPageProps) => {
 export default CriminalsPage
 
 export const getServerSideProps: GetServerSideProps<NextPageProps> = async (context: any) => {
-    const query: RedNoticeQuery = context.query
+    
+    const query : RedNoticeQuery = context.query
     const result: RedNoticeResult = await searchRedNotice(query)
+    console.log(result)
     let notices: CriminalSidebarProps = await (await searchRedNotice())._embedded
-
+    
     const returnValue : ExtendedRedNotice[]  = await Promise.all(result._embedded.notices.map(async notice => {
         return {
             ...notice,
@@ -58,10 +67,13 @@ export const getServerSideProps: GetServerSideProps<NextPageProps> = async (cont
         }
     })
     )
+    const noOfPages = Math.ceil(result.total / query.resultPerPage)
     return {
         props: {
             extendedRedNotices : returnValue,
-            noticesForSidebar: notices
+            noticesForSidebar: notices,
+            query: query,
+            maxPages: noOfPages
         }
     }
 

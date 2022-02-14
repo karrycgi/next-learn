@@ -11,25 +11,11 @@ const CriminalSearchPage: NextPage = () => {
     const router = useRouter()
 
     const onSub: (query: RedNoticeQuery) => void = async (query: RedNoticeQuery) => {
-        const q = await refactorQuery(query)
+        const q = refactorQuery(query)
         router.push("/criminals" + q)
     }
 
-    const refactorQuery: (fullQuery: RedNoticeQuery) => Promise<String> = async (fullQuery: RedNoticeQuery) => {
-        let cleansedQuery = ""
-        let index = 0;
-        for (const [key, value] of Object.entries(fullQuery)) {
-            if (value) {
-                if (index === 0) {
-                    cleansedQuery = cleansedQuery + "?" + key.toString() + "=" + value
-                    index++
-                } else {
-                    cleansedQuery = cleansedQuery + "&" + key.toString() + "=" + value
-                }
-            }
-        }
-        return cleansedQuery
-    }
+
 
     return <div>
         <LayoutComponent title="Search" description="Search Form for querying particular criminals"  >
@@ -39,6 +25,23 @@ const CriminalSearchPage: NextPage = () => {
 }
 
 export default CriminalSearchPage
+
+//serialize Object to String
+export const refactorQuery: (fullQuery: RedNoticeQuery) => string = (fullQuery: RedNoticeQuery) => {
+    let cleansedQuery = ""
+    let index = 0;
+    for (const [key, value] of Object.entries(fullQuery)) {
+        if (value) {
+            if (index === 0) {
+                cleansedQuery = cleansedQuery + "?" + key.toString() + "=" + value
+                index++
+            } else {
+                cleansedQuery = cleansedQuery + "&" + key.toString() + "=" + value
+            }
+        }
+    }
+    return cleansedQuery
+}
 
 
 
